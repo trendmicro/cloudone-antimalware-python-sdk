@@ -1,0 +1,22 @@
+all: build
+
+build: clean
+	pipenv sync --dev
+	pipenv run python -m grpc_tools.protoc -Iamaas/grpc/protos=./amaas/protos \
+		--python_out=. \
+		--pyi_out=. \
+		--grpc_python_out=. \
+		./amaas/protos/scan.proto
+	pipenv run pipenv-setup sync
+	pipenv run python setup.py sdist bdist_wheel
+
+upload:
+	@echo "*** NOT IMPLEMENTED YET ***"
+
+test:
+	@echo "*** NOT IMPLEMENTED YET ***"
+
+clean:
+	@rm -rf dist build *.egg-info amaas/grpc/protos/
+
+.PHONY: all build upload test clean
