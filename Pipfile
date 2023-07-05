@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 protobuf = "~=4.21"
-grpcio = "~=1.51"
+grpcio = "~=1.53"
 
 [dev-packages]
 grpcio-tools = "~=1.51"
